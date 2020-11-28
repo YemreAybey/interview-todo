@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box } from "rebass";
+import Header from "./components/header";
+import { GlobalStyle } from "./theme";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box
+      minWidth="100vw"
+      minHeight="100vh"
+      width={1}
+      height={1}
+      css={{
+        background:
+          "linear-gradient(to right top, #be93c5, #a2a3d9, #86b2df, #76bdda, #7bc6cc)",
+      }}
+    >
+      <GlobalStyle />
+      <Header />
+    </Box>
   );
-}
+};
 
 export default App;
