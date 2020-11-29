@@ -62,7 +62,7 @@ export default function CustomModal({ isOpen, setIsOpen }) {
               dispatch(setActivetodo(null));
             }}
           >
-            Vazgeç
+            Cancel
           </Button>
         </Flex>
       </Flex>

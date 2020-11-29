@@ -88,7 +88,7 @@ export default function CustomModal({ isOpen, setIsOpen, btnName }) {
                       dispatch(setActivetodo(null));
                     }}
                   >
-                    Vazgeç
+                    Cancel
                   </Button>
                 </Flex>
               </Form>
