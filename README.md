@@ -17,7 +17,7 @@ A simple todo app. Easy to use with a nice UI.
 
 ## Backend
 
-For the backend, I have used nodeJS and expressJS. You can see our node-api [on this link](https://github.com/YemreAybey/todo-api)
+For the backend, I have used nodeJS and expressJS. You can see the node-api [on this link](https://github.com/YemreAybey/todo-api)
 
 ## Built With
 
