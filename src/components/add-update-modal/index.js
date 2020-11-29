@@ -15,7 +15,7 @@ const generalValidationSchema = () =>
     title: string()
       .nullable()
       .required("This field should be provided")
-      .min(2, "Title can't be lower than 3 characters"),
+      .min(3, "Title can't be lower than 3 characters"),
   });
 
 export default function CustomModal({ isOpen, setIsOpen, btnName }) {
