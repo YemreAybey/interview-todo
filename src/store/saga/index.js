@@ -1,8 +1,8 @@
 import { call, put, takeLatest } from "redux-saga/effects";
+import { toast } from "react-toastify";
 import todoAPI from "../../api";
 import {
   setTodos,
-  setErrors,
   setActivetodo,
   FETCH_TODOS,
   FETCH_ACTIVE_TODO,
@@ -11,6 +11,16 @@ import {
   setTodosUpdated,
   ADD_TODO,
 } from "../actions";
+
+const generateErrorMessage = (e) => {
+  if (e.response && e.response.data && e.response.data.errors) {
+    e.response.data.errors.forEach((error) => {
+      toast.error(error.message);
+    });
+  } else {
+    toast.error("Bir hata oluştu");
+  }
+};
 
 const endpoints = {
   addTodo: "/api/todos",
@@ -21,8 +31,8 @@ const endpoints = {
 };
 
 const services = {
-  addTodo: (todo) => todoAPI.get(endpoints.addTodo, todo),
-  fetchTodos: todoAPI.get(endpoints.fetchTodos),
+  addTodo: (todo) => todoAPI.post(endpoints.addTodo, todo),
+  fetchTodos: () => todoAPI.get(endpoints.fetchTodos),
   fetchActiveTodo: (id) => todoAPI.get(endpoints.fetchActiveTodo(id)),
   updateTodo: (id, newTodo) => todoAPI.put(endpoints.updateTodo(id), newTodo),
   deleteTodo: (id) => todoAPI.delete(endpoints.deleteTodo(id)),
@@ -31,27 +41,28 @@ const services = {
 function* fetchTodos(action) {
   try {
     const todos = yield call(services.fetchTodos);
-    yield put(setTodos(todos));
+    yield put(setTodos(todos.data));
   } catch (e) {
-    yield put(setErrors(e.response.errors));
+    generateErrorMessage(e);
   }
 }
 
 function* fetchActiveTodo(action) {
   try {
-    const todo = yield call(services.addTodo, action.todo);
-    yield put(setActivetodo(todo));
+    const todo = yield call(services.fetchActiveTodo, action.todo);
+    yield put(setActivetodo(todo.data));
   } catch (e) {
-    yield put(setErrors(e.response.errors));
+    generateErrorMessage(e);
   }
 }
 
 function* addTodo(action) {
   try {
-    yield call(services.fetchActiveTodo, action.id);
+    yield call(services.addTodo, action.todo);
     yield put(setTodosUpdated(true));
+    toast.success("Todo is added successfuly");
   } catch (e) {
-    yield put(setErrors(e.response.errors));
+    generateErrorMessage(e);
   }
 }
 
@@ -59,17 +70,19 @@ function* updateTodo(action) {
   try {
     yield call(services.updateTodo, action.id, action.newTodo);
     yield put(setTodosUpdated(true));
+    toast.success("Todo is updated successfuly");
   } catch (e) {
-    yield put(setErrors(e.response.errors));
+    generateErrorMessage(e);
   }
 }
 
 function* deleteTodo(action) {
   try {
     yield call(services.deleteTodo, action.id);
+    toast.success("Todo is deleted successfuly");
     yield put(setTodosUpdated(true));
   } catch (e) {
-    yield put(setErrors(e.response.errors));
+    generateErrorMessage(e);
   }
 }
 

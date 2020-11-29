@@ -34,6 +34,7 @@ const todoReducer = (state = initialState, action) => {
         ...state,
         fetchStatus: FETCH_STATUSES.FETCHED,
         todos: action.todos,
+        isTodosUpdated: false,
       };
     case SET_ACTIVE_TODO:
       return {
@@ -46,6 +47,7 @@ const todoReducer = (state = initialState, action) => {
         ...state,
         fetchStatus: FETCH_STATUSES.IDLE,
         errors: [...state.errors, action.error],
+        isTodosUpdated: false,
       };
     case SET_TODOS_UPDATED:
       return {
