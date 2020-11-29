@@ -27,7 +27,7 @@ For the backend, I have used nodeJS and expressJS. You can see our node-api [on 
 - Styled-Components
 - Rebass
 
-### ✨ [Live Demo](https://emre-todo.herokuapp.com/)
+### ✨ [Live Demo](https://emre-todo.herokuapp.com)
 
 ## Usage
 
@@ -40,7 +40,7 @@ $ git clone https://github.com/YemreAybey/interview-todo.git
 > cd into the directory, install dependencies and start
 
 ```sh
-$ cd basic-bookstore-redux
+$ cd interview-todo
 $ yarn or npm install
 $ yarn start or npm start
 ```
