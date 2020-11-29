@@ -11,10 +11,10 @@ export const SET_TODOS_UPDATED = "SET TODOS UPDATED";
 export const fetchTodos = () => ({ type: FETCH_TODOS });
 export const setTodos = (todos) => ({ type: SET_TODOS, todos });
 export const fetchActivetodo = () => ({ type: FETCH_ACTIVE_TODO });
-export const setActivetodo = (todo) => ({ type: SET_TODOS, todo });
+export const setActivetodo = (todo) => ({ type: SET_ACTIVE_TODO, todo });
 export const addTodo = (todo) => ({ type: ADD_TODO, todo });
-export const updateTodo = (id) => ({ type: UPDATE_TODO, id });
-export const deleteTodo = (id) => ({ type: SET_TODOS, id });
+export const updateTodo = (id, newTodo) => ({ type: UPDATE_TODO, id, newTodo });
+export const deleteTodo = (id) => ({ type: DELETE_TODO, id });
 export const setErrors = (errors) => ({ type: SET_ERRORS, errors });
 export const setTodosUpdated = (isUpdated) => ({
   type: SET_TODOS_UPDATED,

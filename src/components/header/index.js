@@ -1,4 +1,6 @@
 import { Box, Flex, Heading } from "rebass";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
@@ -7,13 +9,15 @@ const Header = () => {
       margin="0 auto"
       px={20}
       width={1}
-      height={[60, 120]}
+      height={120}
       justifyContent="space-between"
       alignItems="center"
     >
-      <Heading fonstSize={[16, 20, 24]}>TODOS</Heading>
+      <Heading fontFamily="Roboto" fonstSize={[4, 5, 6]}>
+        TODOS
+      </Heading>
       <Box>
-        <i class="fas fa-clipboard-list fa-5x"></i>
+        <FontAwesomeIcon icon={faClipboardList} size="4x" />
       </Box>
     </Flex>
   );
