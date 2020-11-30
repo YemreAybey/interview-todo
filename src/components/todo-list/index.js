@@ -52,6 +52,7 @@ const TodoList = () => {
       <DeleteModal isOpen={isDeleteOpen} setIsOpen={setIsDeleteOpen} />
       {todos.map((todo) => (
         <TodoItem
+          key={todo.id}
           todo={todo}
           setIsDeleteOpen={setIsDeleteOpen}
           setIsAddUpdateOpen={showUpdateModal}
